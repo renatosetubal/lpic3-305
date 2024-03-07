@@ -5,13 +5,14 @@ Vagrant.configure("2") do |config|
    # #Nome da Imagem que será baixada
    config.vm.box = "debian/bookworm64"
    
-   #config.vm.box_check_update = false #Verificar o update da vbox
-   config.vm.network "private_network", ip: "192.168.33.11" #Definindo o tipo de rede e um ip para a máquina virtual
+   config.vm.box_check_update = true #Verificar o update da vbox
+   #config.vm.network "private_network", ip: "192.168.33.11" #Definindo o tipo de rede e um ip para a máquina virtual
+   config.vm.network "public_network", bridge: "Killer E2600 Gigabit Ethernet Controller", type: "dhcp" #Definindo o tipo de rede e um ip para a máquina virtual
    config.vm.synced_folder "Files", "/files" #
   
    config.vm.provider "virtualbox" do |vb| #Configuração da máquina virtual que será criada
       vb.customize ["modifyvm", :id, "--groups", "/Lpic-305"]
-	   vb.customize ['createhd', '--filename', '/disk/sdb', '--size', 20 * 1024]
+	  vb.customize ['createhd', '--filename', '/disk/sdb', '--size', 20 * 1024]
       vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', '/disk/sdb.vdi']
             
       vb.name = "Db12Xen" #Definindo o nome da Máquina
