@@ -6,7 +6,7 @@ DISC01 = "disks/"+HOSTNAME+"_sdb.vdi"
 MEM="2048"
 CPUS="2"
 GRUPO="/Lab02_XEN"
-BOX= "bento/debian-12"
+BOX= "debian/bookworm64"
 
 
 Vagrant.configure("2") do |config|
