@@ -14,16 +14,15 @@ Vagrant.configure("2") do |config|
    
     config.vm.box = BOX
     config.vm.box_check_update = true #Verificar o update da vbox
-    #config.vm.network "public_network", bridge: "default", type: "dhcp"
-    config.vm.network "public_network", Bridge: 1, type: "dhcp"
-    config.vm.synced_folder "../Arquivos", "/vagrant" 
+    config.vm.network "public_network", Bridge: "auto", type: "dhcp"
+    config.vm.synced_folder "../Arquivos", "/vagrant", mount_options: ["defaults"]
     config.vm.provider "virtualbox" do |vb| #Configuração da máquina virtual que será criada
-    if File.exist?(DISC01)
-       vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', DISC01]
-    else
-       vb.customize ['createhd', '--filename', DISC01, '--size', 10 * 1024]
-       vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', DISC01] 
-     end
+       if File.exist?(DISC01)
+          vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', DISC01]
+       else
+          vb.customize ['createhd', '--filename', DISC01, '--size', 10 * 1024]
+          vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', DISC01] 
+       end
        
        vb.name = HOSTNAME 
        vb.cpus = CPUS
@@ -32,9 +31,9 @@ Vagrant.configure("2") do |config|
        vb.customize ["modifyvm", :id, "--groups", GRUPO]
     end
     config.vm.provision "shell", inline: <<-SHELL
-        #Execução de script básico
-        apt update -y
-        apt install vim net-tools dos2unix -y
+       #Execução de script básico
+       apt update -y
+       apt install vim net-tools dos2unix -y
     SHELL
     #config.vm.provision "shell", path:"scripts/"+HOSTNAME+".sh"
  end

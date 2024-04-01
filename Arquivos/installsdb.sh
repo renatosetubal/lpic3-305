@@ -10,3 +10,4 @@ mount /dev/sdb /mnt/sdb
 echo "/dev/sdb /mnt/sdb xfs defaults 0 0" >> /etc/fstab
 systemctl daemon-reload
 mount -a
+df -h
