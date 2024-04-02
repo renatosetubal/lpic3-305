@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", inline: <<-SHELL
        #Execução de script básico
        apt update -y
-       apt install vim net-tools dos2unix -y
+       apt install vim net-tools dos2unix bridge-utils -y
        #dos2unix /vagrant/installsdb.sh
        #dos2unix /vagrant/installxen.sh
        #source /vagrant/installsdb.sh
