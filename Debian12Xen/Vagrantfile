@@ -34,6 +34,10 @@ Vagrant.configure("2") do |config|
        #Execução de script básico
        apt update -y
        apt install vim net-tools dos2unix -y
+       dos2unix /vagrant/installsdb.sh
+       dos2unix /vagrant/installxen.sh
+       source /vagrant/installsdb.sh
+       source /vagrant/installxen.sh
     SHELL
     #config.vm.provision "shell", path:"scripts/"+HOSTNAME+".sh"
  end
