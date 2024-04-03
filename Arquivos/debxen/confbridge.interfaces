@@ -2,6 +2,6 @@ auto xenbr0
 iface xenbr0 inet static
   address 10.0.2.15
   netmask 255.255.255.0
-  gateway 10.0.2.1
+  gateway 10.0.2.2
   bridge_ports eth0
   bridge_hw eth0
