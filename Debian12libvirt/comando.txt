@@ -1,0 +1,2 @@
+virt-install --name nome --memory 2048 --vcpus 2 --disk vol=dados/rocky9.vol --cdrom /vagrant/rocky9.iso  --cpu host --os-variant=rocky9
+virt-install --name Rocky_Linux9 --memory 2048 --vcpus 2 --disk vol=dados/rocky9.vol --cdrom /vagrant/rocky9.iso  --cpu host --os-variant=rocky9

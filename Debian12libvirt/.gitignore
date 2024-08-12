@@ -3,3 +3,5 @@
 *.crt
 *.iso
 /hdd/
+*.zip
+*.gz
