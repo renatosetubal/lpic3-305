@@ -1,7 +1,0 @@
-
-qemu-system-x86_64 -name debian12-01 -machine accel=kvm -hda debiansda.qcow2 -cdrom debian-12.6.0-amd64-netinst.iso -boot d -m 2048 -smp cpus=2
-
-qemu-system-x86_64 -name UbuntuServer -hda /home/vagrant/UbuntuServer.qcow2 -cdrom debian-12.6.0-amd64-netinst.iso -boot c -m 2048 -smp cpus=2 -kernel /boot/vmlinuz-6.1.0-23-amd64 -initrd /boot/initrd.img-6.1.0-23-amd64 -append 'root=/dev/ubuntu-vg/ubuntu-lv fastboot' 
-
-qemu-system-x86_64 -name Ubuntu -enable-kvm -hda ub1.qcow2 -m 2024 -smp cpus=2 -chardev socket,path=/tmp/qga.sock,server=on,wait=off,id=qga0 -device virtio-serial -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
-

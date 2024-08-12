@@ -1,6 +1,7 @@
 /.vagrant/
 *.vdi
+*.crt
 *.iso
+/hdd/
 *.zip
 *.gz
-/hdd/
