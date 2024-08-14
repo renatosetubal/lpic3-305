@@ -17,11 +17,10 @@ Vagrant.configure("2") do |config|
     #config.vm.network "public_network", bridge: BRIDGE, ip: IP, dns: "8.8.8.8"
     config.vm.network "private_network", ip: IP
     config.vm.synced_folder ".", "/vagrant" 
-   
-    config.vm.provider "virtualbox" do |vb| 
+       config.vm.provider "virtualbox" do |vb| 
        vb.name = HOSTNAME 
        vb.cpus = CPU 
-       vb.gui = GUI 
+       vb.gui = false 
        vb.memory = MEM 
        vb.customize ["modifyvm", :id, "--groups", GROUP]
        if File.exist?(DISK)
