@@ -27,7 +27,6 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "shell", inline: <<-SHELL 
        apt update -y
-       apt upgrade -y
        rcvboxadd quicksetup all
        hostnamectl set-hostname Docker
        poweroff
