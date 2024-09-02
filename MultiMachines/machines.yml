@@ -15,5 +15,5 @@
     size: 4GB
     desc: sdb
   box: bento/debian-12
-  script: xen.sh
+  script: sh/xen.sh
 
